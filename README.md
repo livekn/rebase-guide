@@ -2,26 +2,17 @@
 
 Checkout 到不同的 branch 來玩玩吧。
 
-## 在中間插入 commit
-
-`git checkout insert-commit-guide`
-
 ## 在中間刪除 commit
 
-`git checkout remove-commit-guide`
+有時候，我們會希望把 commit 刪除，這時我們可以用 rebase 來處理。
 
-## 在中間修改 commit 內容
+接下來，就試試在 `commit1` 和 `commit2` 中間，把錯誤的 commit `remove this commit` 刪除吧。
 
-`git checkout modify-commit-guide`
+1. `git rebase -i main`
+2. 把 `remove this commit` 前面的 pick 改成 `d` 或者 `drop` ，然後儲存結束
 
-## 調整 commit 順序
+現在用 `git log` 相信就能看到在 `commit1` 後面就是 `commit2` 中間，多餘的 `remove this commit` 不見了。
 
-`git checkout reorder-commit-guide`
+### Tips
 
-## 合併 commits
-
-`git checkout squash-commits-guide`
-
-## 分拆 commit
-
-`git checkout split-commit-guide`
+你並不一定要用別的 branch 才能 rebase 的，你也可以用 `git log` 找出更前面的 commit id ，並以它為底來 rebase 。
