@@ -2,26 +2,17 @@
 
 Checkout 到不同的 branch 來玩玩吧。
 
-## 在中間插入 commit
-
-`git checkout insert-commit-guide`
-
-## 在中間刪除 commit
-
-`git checkout remove-commit-guide`
-
-## 在中間修改 commit 內容
-
-`git checkout modify-commit-guide`
-
 ## 調整 commit 順序
 
-`git checkout reorder-commit-guide`
+有時候，我們會希望調整 commit 順序，這時我們可以用 rebase 來處理。
 
-## 合併 commits
+在這個 branch 中， commit 是 `commit1` -> `commit3` -> `commit2` ，我們就試試改正成 `commit1` -> `commit2` -> `commit3` 吧。
 
-`git checkout squash-commits-guide`
+1. `git rebase -i main`
+2. 把 commit2 的那行搬到 commit3 前，在 vi 中，可以我以先移到 `commit2` 那行，輸入 `dd` 把它刪除，再到 `commit3` 那行，輸入 `P` （大寫），把刪除的那行貼到上面，並儲存結束
 
-## 分拆 commit
+現在用 `git log` 相信就能看到順序是正確的 `commit1` -> `commit2` -> `commit3` 了。
 
-`git checkout split-commit-guide`
+### Tips
+
+你並不一定要用別的 branch 才能 rebase 的，你也可以用 `git log` 找出更前面的 commit id ，並以它為底來 rebase 。
